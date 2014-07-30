@@ -67,9 +67,9 @@ private $regexp_rule=array(
 $this->get_page($query);
 $this->get_content_urls();
 $this->get_category_urls();
-
-// print_r($this->result_array);
 $this->array_reindex($this->result_array[0],$this->result_array[1]);
+
+
 
 }
 
@@ -114,19 +114,21 @@ $this->result_array[1] = array_unique($this->result_array[1]);
 }
 private function array_reindex ($array_one, $array_two){
 
-print_r($array_two);
- 
- $counter=0; 
-	 
- foreach($array_one as $key => $value)
-    {
-	 unset($array_one[$key]);
-	 $array_one[$counter]=$value;
-	 $counter++;
-    }
-// print_r($array_one); 
-// $this->result_array=$array;
-// print_r($this->result_array);
+
+$temp_array= array($array_one,$array_two);
+
+ 	 
+ foreach($temp_array as $key =>$temp_value)
+ {
+	$counter=0;
+	foreach ($temp_value as $Tkey=>$value) {
+	unset($temp_array[$key][$Tkey]);
+	$temp_array[$key][$counter]=$temp_value[$Tkey];
+	$counter++;	
+	}
+	
+	}
+$this->result_array=$temp_array;	
 }
 
 
