@@ -84,15 +84,6 @@ $this->result_array[0]=array_merge($this->result_array[0][1],$this->result_array
 $this->result_array[0] =array_diff($this->result_array[0],array(''));
 $this->result_array[0] = array_unique($this->result_array[0]);
 
-// $i=0;
-    // foreach($this->result_array[0] as $k => $item)
-    // {
-    // $this->result_array[0][$i]=$item;
-        // unset($this->result_array[0][$k]);
-        // $i++;
-
-    // }
-
 }
 private function get_category_urls(){
 preg_match_all($this->regexp_rule['category_url'], $this->document_content, $this->result_array[1]);
@@ -100,24 +91,9 @@ $this->result_array[1]=array_merge($this->result_array[1][1],$this->result_array
 $this->result_array[1] =array_diff($this->result_array[1],array(''));
 $this->result_array[1] = array_unique($this->result_array[1]);
 
-
-
-// $i=0;    
-	// foreach($this->result_array[1] as $k => $item)
-    // {
-    // $this->result_array[1][$i]=$item;
-        // unset($this->result_array[1][$k]);
-        // $i++;
-
-    // }
-
 }
 private function array_reindex ($array_one, $array_two){
-
-
-$temp_array= array($array_one,$array_two);
-
- 	 
+$temp_array= array($array_one,$array_two); 	 
  foreach($temp_array as $key =>$temp_value)
  {
 	$counter=0;
@@ -130,12 +106,7 @@ $temp_array= array($array_one,$array_two);
 	}
 $this->result_array=$temp_array;	
 }
-
-
 }
-
-
-
 $first = new Parser('http://'.$_GET['url_query']);
 
 
