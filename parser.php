@@ -64,18 +64,15 @@ private $regexp_rule=array(
 
  function __construct ($query) {
 
-$this->get_page($query);
+$this->document_content=$this->get_page($query);
 $this->get_content_urls();
 $this->get_category_urls();
 $this->array_reindex($this->result_array[0],$this->result_array[1]);
-
-
-
 }
 
 private function get_page($document_url)
 {
- $this->document_content=file_get_contents($document_url);
+return file_get_contents($document_url);
 }
 
 private function get_content_urls (){
