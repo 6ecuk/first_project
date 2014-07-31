@@ -4,9 +4,7 @@ private $document_content;
 public $result_array=array();
 private $regexp_rule=array(
 'category_url' => '#<a\s*href="(.*)"\s*class="service-nav-a">| <a class="post-meta-link post-meta-rubric" href="(.*)"># ',
-'content_url' => '#(?:<a class="post-item-link" href="(.*)">)|(?:<a href="(.*)" class="post-item-link">)#',
-'header'=> '#<h1 class="post-title(.*) ">(.*)<\/h1>|<h1 class="post-title (.*)">(.*) <\/h1>|<h1 class="post-title(.*)">(.*)<\/h1># ',
-'category_clean_url' =>'#href=".*\/"#'  
+'content_url' => '#(?:<a class="post-item-link" href="(.*)">)|(?:<a href="(.*)" class="post-item-link">)#'
 );
 
  function __construct ($query) {
@@ -23,8 +21,7 @@ public function get_result_array()
 return $this->result_array;
 }
 
-
-private function get_page($document_url)
+protected function get_page($document_url)
 {
 return file_get_contents($document_url);
 }
@@ -41,7 +38,6 @@ preg_match_all($this->regexp_rule['category_url'], $this->document_content, $thi
 $this->result_array['category_url']=array_merge($this->result_array['category_url'][1],$this->result_array['category_url'][2]);
 $this->result_array['category_url'] =array_diff($this->result_array['category_url'],array(''));
 $this->result_array['category_url'] = array_unique($this->result_array['category_url']);
-
 }
 private function array_reindex ($array){
 	 
