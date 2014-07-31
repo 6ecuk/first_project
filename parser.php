@@ -90,7 +90,7 @@ $this->result_array[1] = array_unique($this->result_array[1]);
 
 }
 private function array_reindex ($array){
-// $temp_array= array($array_one,$array_two); 	 
+	 
  foreach($array as $key =>$temp_value)
  {
 	$counter=0;
