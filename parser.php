@@ -67,7 +67,7 @@ private $regexp_rule=array(
 $this->document_content=$this->get_page($query);
 $this->get_content_urls();
 $this->get_category_urls();
-$this->array_reindex($this->result_array[0],$this->result_array[1]);
+$this->array_reindex($this->result_array);
 }
 
 private function get_page($document_url)
@@ -89,19 +89,19 @@ $this->result_array[1] =array_diff($this->result_array[1],array(''));
 $this->result_array[1] = array_unique($this->result_array[1]);
 
 }
-private function array_reindex ($array_one, $array_two){
-$temp_array= array($array_one,$array_two); 	 
- foreach($temp_array as $key =>$temp_value)
+private function array_reindex ($array){
+// $temp_array= array($array_one,$array_two); 	 
+ foreach($array as $key =>$temp_value)
  {
 	$counter=0;
 	foreach ($temp_value as $Tkey=>$value) {
-	unset($temp_array[$key][$Tkey]);
-	$temp_array[$key][$counter]=$temp_value[$Tkey];
+	unset($array[$key][$Tkey]);
+	$array[$key][$counter]=$temp_value[$Tkey];
 	$counter++;	
 	}
 	
 	}
-$this->result_array=$temp_array;	
+$this->result_array=$array;	
 }
 }
 $first = new Parser('http://'.$_GET['url_query']);
