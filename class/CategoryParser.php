@@ -1,7 +1,7 @@
 ﻿<?php 
 class CategoryParser {
 private $document_content;
-private $result_array=array();
+public $result_array=array();
 private $regexp_rule=array(
 'category_url' => '#<a\s*href="(.*)"\s*class="service-nav-a">| <a class="post-meta-link post-meta-rubric" href="(.*)"># ',
 'content_url' => '#(?:<a class="post-item-link" href="(.*)">)|(?:<a href="(.*)" class="post-item-link">)#',
@@ -16,6 +16,13 @@ $this->get_content_urls();
 $this->get_category_urls();
 $this->array_reindex($this->result_array);
 }
+
+
+public function get_result_array()
+{
+return $this->result_array;
+}
+
 
 private function get_page($document_url)
 {
