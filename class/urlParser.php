@@ -1,5 +1,5 @@
 ﻿<?php 
-class CategoryParser {
+class urlParser {
 private $document_content;
 public $result_array=array();
 private $regexp_rule=array(
