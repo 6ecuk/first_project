@@ -1,5 +1,5 @@
 ﻿<?php 
-include 'class/ContentParser.php';   
+include 'model/ContentParser.php';   
 class urlParser {
 private $document_content;
 public $result_array=array();
