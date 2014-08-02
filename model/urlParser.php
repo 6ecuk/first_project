@@ -1,5 +1,5 @@
 ﻿<?php 
-include 'model/ContentParser.php';   
+  
 class urlParser {
 private $document_content;
 public $result_array=array();
@@ -8,20 +8,20 @@ private $regexp_rule=array(
 'content_url' => '#(?:<a class="post-item-link" href="(.*)">)|(?:<a href="(.*)" class="post-item-link">)#'
 );
 
- function __construct ($query) {
+ function __construct ($query_url) {
 
-$this->document_content=$this->get_page($query);
+$this->document_content=$this->get_page($query_url);
 $this->get_content_urls();
 $this->get_category_urls();
 $this->array_reindex($this->result_array);
-$ContentParser = new ContentParser( $this->result_array);
+
 }
 
 
-// private function get_result_array()
-// {
-// return $this->result_array;
-// }
+public function get_result_array()
+{
+return $this->result_array;
+}
 
 protected function get_page($document_url)
 {
