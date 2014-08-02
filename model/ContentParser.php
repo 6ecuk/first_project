@@ -1,4 +1,4 @@
-<?php
+<?php 
 class ContentParser extends urlParser{
 
 private $url_array= array();

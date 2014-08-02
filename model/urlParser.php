@@ -1,4 +1,4 @@
-﻿<?php
+﻿<?php 
   
 class urlParser {
 private $document_content;
