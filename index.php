@@ -2,5 +2,5 @@
 include 'class/urlParser.php';
 include 'class/ContentParser.php';   
 header("Content-Type: text/html; charset=utf-8");
-$CategoryParser = new CategoryParser('http://'.$_GET['url_query']);
-$ContentParser = new ContentParser( $CategoryParser->get_result_array());
+$CategoryParser = new urlParser('http://'.$_GET['url_query']);
+

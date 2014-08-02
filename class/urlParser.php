@@ -1,4 +1,5 @@
 ﻿<?php 
+include 'class/ContentParser.php';   
 class urlParser {
 private $document_content;
 public $result_array=array();
@@ -13,13 +14,14 @@ $this->document_content=$this->get_page($query);
 $this->get_content_urls();
 $this->get_category_urls();
 $this->array_reindex($this->result_array);
+$ContentParser = new ContentParser( $this->result_array);
 }
 
 
-public function get_result_array()
-{
-return $this->result_array;
-}
+// private function get_result_array()
+// {
+// return $this->result_array;
+// }
 
 protected function get_page($document_url)
 {
