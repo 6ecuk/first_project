@@ -7,41 +7,34 @@ private $regexp_rule=array(
 'time'=> '#(?:post-meta-rubric">(?:.*)<\/a><\/li>\s*<li class="post-meta-item">)(?:\s.*)(?:\s)(.*)(?:<\/time>)#',
 'text_content'=> '#<div class="post-text post-text_news">([^Ё]*)[^a]{1}<figure class="post-media">#u'
 );
-private $content_array=array(
-);
+private $content_array=array();
 private $document_content;
 
 function  __construct($array_data)
  {
 $this->set_array($array_data);
-// $this->parse();
-$this->document_content=parent::get_page('http://'.$_GET['url_query'].$this->url_array['content_url'][0]);
-$this->get_content($this->document_content);
-print_r($this->content_array);
+$this->get_content($this->url_array['content_url']);
+// $this->document_content=parent::get_page('http://'.$_GET['url_query'].$this->url_array['content_url'][0]);
+// $this->get_content($this->document_content);
 
+print_r($this->content_array);
  }
  
-private function parse(){
+private function get_content(array $url){
 
-	// foreach($this->url_array['content_url'] as $key => $value ) {
-	// $this->document_content=parent::get_page('http://' . $_GET['url_query'] . $value);
+	foreach($url as $key => $value ) {
+	$this->document_content=parent::get_page('http://' . $_GET['url_query'] . $value);
 	// $this->get_content($this->document_content);
-// }
-
-}
- 
- 
- 
-private function get_content ($content){ 
-
-foreach ($this->regexp_rule as $key =>$value){
-preg_match_all($value, $content, $this->content_array[$key]);
-
+		foreach ($this->regexp_rule as $skey =>$svalue)
+		{
+			preg_match_all($svalue, $this->document_content, $this->content_array[$value][$skey]);
+		}
+	
 }
 
 }
  
-private function set_array ($array_data){
+private function set_array (array $array_data){
 $this->url_array=$array_data;
 }
 

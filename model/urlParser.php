@@ -41,7 +41,7 @@ $this->result_array['category_url']=array_merge($this->result_array['category_ur
 $this->result_array['category_url'] =array_diff($this->result_array['category_url'],array(''));
 $this->result_array['category_url'] = array_unique($this->result_array['category_url']);
 }
-private function array_reindex ($array){
+private function array_reindex (array $array){
 	 
  foreach($array as $key =>$temp_value)
  {
