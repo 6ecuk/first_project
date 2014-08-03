@@ -24,10 +24,10 @@ private function get_content(array $url){
 
 	foreach($url as $key => $value ) {
 	$this->document_content=parent::get_page('http://' . $_GET['url_query'] . $value);
-	// $this->get_content($this->document_content);
-		foreach ($this->regexp_rule as $skey =>$svalue)
+
+		foreach ($this->regexp_rule as $second_key =>$second_value)
 		{
-			preg_match_all($svalue, $this->document_content, $this->content_array[$value][$skey]);
+			preg_match_all($second_value, $this->document_content, $this->content_array[$value][$second_key]);
 		}
 	
 }
