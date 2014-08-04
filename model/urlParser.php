@@ -58,4 +58,3 @@ private function array_reindex (array $array){
 $this->result_array=$array;	
 }
 }
-?>
