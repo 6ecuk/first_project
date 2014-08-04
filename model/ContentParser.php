@@ -15,7 +15,7 @@ function  __construct($array_data)
  {
 $this->set_array($array_data);
 $this->get_content($this->url_array['content_url']);
-print_r($this->content_array);
+
  }
 
 
@@ -34,5 +34,7 @@ private function get_content(array $url){
 private function set_array (array $array_data){
 $this->url_array=$array_data;
 }
-
+public function get_array(){
+    return $this->content_array;
+}
 }
