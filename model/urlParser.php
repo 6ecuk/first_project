@@ -1,4 +1,6 @@
-﻿<?php 
+﻿<!--Данный класс модели получает урл-адрес от контроллера, после парсит урлы категорий и статей в документе  -->
+
+<?php
   
 class urlParser {
 private $document_content;
@@ -46,9 +48,9 @@ private function array_reindex (array $array){
  foreach($array as $key =>$temp_value)
  {
 	$counter=0;
-	foreach ($temp_value as $Tkey=>$value) {
-	unset($array[$key][$Tkey]);
-	$array[$key][$counter]=$temp_value[$Tkey];
+	foreach ($temp_value as $second_key=>$value) {
+	unset($array[$key][$second_key]);
+	$array[$key][$counter]=$temp_value[$second_key];
 	$counter++;	
 	}
 	
