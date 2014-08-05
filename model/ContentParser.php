@@ -15,14 +15,14 @@ function  __construct($array_data)
  {
 $this->set_array($array_data);
 $this->get_content($this->url_array['content_url']);
-
+echo "Operation done";
  }
 
 
 private function get_content(array $url){
 
 	foreach($url as $value ) {
-	$this->document_content=parent::get_page('http://' . $_GET['url_query'] . $value);
+	$this->document_content=parent::get_page(urlController::get_url_query() . $value);
 
         foreach ($this->regexp_rules as $key =>$second_value)
         {
