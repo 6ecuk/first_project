@@ -13,12 +13,10 @@ private $regexp_rule=array(
  function __construct ($query_url) {
 
 $this->document_content=$this->get_page($query_url);
-$this->get_content_urls();
-$this->get_category_urls();
+$this->get_urls();
 $this->array_reindex($this->result_array);
-
+print_r($this->result_array);
 }
-
 
 public function get_result_array()
 {
@@ -30,19 +28,15 @@ protected function get_page($document_url)
 return file_get_contents($document_url);
 }
 
-private function get_content_urls (){
-preg_match_all($this->regexp_rule['content_url'], $this->document_content, $this->result_array['content_url']);
-$this->result_array['content_url']=array_merge($this->result_array['content_url'][1],$this->result_array['content_url'][2]);
-$this->result_array['content_url']=array_diff($this->result_array['content_url'],array(''));
-$this->result_array['content_url']= array_unique($this->result_array['content_url']);
+private function get_urls(){
 
-}
-private function get_category_urls(){
-preg_match_all($this->regexp_rule['category_url'], $this->document_content, $this->result_array['category_url']);
-$this->result_array['category_url']=array_merge($this->result_array['category_url'][1],$this->result_array['category_url'][2]);
-$this->result_array['category_url'] =array_diff($this->result_array['category_url'],array(''));
-$this->result_array['category_url'] = array_unique($this->result_array['category_url']);
-}
+    foreach ($this->regexp_rule as $key=>$value){
+        preg_match_all($this->regexp_rule[$key], $this->document_content, $this->result_array[$key]);
+        $this->result_array[$key]=array_merge($this->result_array[$key][1],$this->result_array[$key][2]);
+        $this->result_array[$key]=array_diff($this->result_array[$key],array(''));
+        $this->result_array[$key]= array_unique($this->result_array[$key]);
+    }
+ }
 private function array_reindex (array $array){
 	 
  foreach($array as $key =>$temp_value)
