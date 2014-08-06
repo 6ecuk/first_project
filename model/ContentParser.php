@@ -15,7 +15,6 @@ function  __construct($array_data)
  {
 $this->set_array($array_data);
 $this->get_content($this->url_array['content_url']);
-
  }
 
 

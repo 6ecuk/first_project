@@ -15,7 +15,6 @@ private $regexp_rule=array(
 $this->document_content=$this->get_page($query_url);
 $this->get_urls();
 $this->array_reindex($this->result_array);
-print_r($this->result_array);
 }
 
 public function get_result_array()
@@ -27,7 +26,6 @@ protected function get_page($document_url)
 {
 return file_get_contents($document_url);
 }
-
 private function get_urls(){
 
     foreach ($this->regexp_rule as $key=>$value){
