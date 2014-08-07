@@ -4,7 +4,7 @@
  * Добавление данных в базу данных.
  */
 
-class DataBase {
+class model_dataBase {
 private $content;
 private $login='root';
 private $password='root';
@@ -12,9 +12,9 @@ private $password='root';
 function __construct($data)
 {
     $this->content=$data;
-   $this->DB_insert();
+   $this->DatabaseInsert();
 }
-private function DB_insert (){
+private function DatabaseInsert (){
     try{
 $dbh = new PDO('mysql:host=localhost;dbname=test', $this->login, $this->password);
         foreach ($this->content as $key =>$value ){

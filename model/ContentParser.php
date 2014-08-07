@@ -1,39 +1,39 @@
 <!--Данный класс модели получает от контроллера список урлов-адресов статей и парсит их контент-->
 <?php
-class ContentParser extends urlParser{
+class model_contentParser extends model_urlParser{
 
-private $url_array= array();
-private $regexp_rules=array(
+private $urlArray= array();
+private $regexpRules=array(
     'header'=> '#<h1 class="(?:.*)">(.*)<\/h1># ',
     'time'=> '#<time .*>\s(.*)\s.*<\/time>#',
     'text_content'=> '#<div class="post-text.*">([^Ё]*){1}<footer class=".*post.*">#u'
 );
-private $content_array=array();
-private $document_content;
+private $contentArray=array();
+private $documentContent;
 
-function  __construct($array_data)
+function  __construct($arrayData)
  {
-$this->set_array($array_data);
-$this->get_content($this->url_array['content_url']);
+$this->setArray($arrayData);
+$this->getContent($this->urlArray['content_url']);
  }
 
 
-private function get_content(array $url){
+private function getContent(array $url){
 
 	foreach($url as $value ) {
-	$this->document_content=parent::get_page(urlController::get_url_query() . $value);
+	$this->documentContent=parent::getPage(controller_index::getUrlQuery() . $value);
 
-        foreach ($this->regexp_rules as $key =>$second_value)
+        foreach ($this->regexpRules as $key =>$secondValue)
         {
-            preg_match_all($second_value, $this->document_content, $this->content_array[$value][$key]);
+            preg_match_all($secondValue, $this->documentContent, $this->contentArray[$value][$key]);
         }
 }
 }
 
-private function set_array (array $array_data){
-$this->url_array=$array_data;
+private function setArray (array $arrayData){
+$this->urlArray=$arrayData;
 }
-public function get_array(){
-    return $this->content_array;
+public function getArray(){
+    return $this->contentArray;
 }
 }

@@ -2,51 +2,51 @@
 
 <?php
   
-class urlParser {
-private $document_content;
-private $result_array=array();
-private $regexp_rule=array(
+class model_urlParser {
+private $documentContent;
+private $resultArray=array();
+private $regexpRule=array(
 'category_url' => '#<a\s*href="(.*)"\s*class="service-nav-a">| <a class="post-meta-link post-meta-rubric" href="(.*)"># ',
 'content_url' => '#(?:<a class="post-item-link" href="(.*)">)|(?:<a href="(.*)" class="post-item-link">)#'
 );
 
- function __construct ($query_url) {
+ function __construct ($queryUrl) {
 
-$this->document_content=$this->get_page($query_url);
-$this->get_urls();
-$this->array_reindex($this->result_array);
+$this->documentContent=$this->getPage($queryUrl);
+$this->getUrls();
+$this->arrayReindex($this->resultArray);
 }
 
-public function get_result_array()
+public function getResultArray()
 {
-return $this->result_array;
+return $this->resultArray;
 }
 
-protected function get_page($document_url)
+protected function getPage($documentUrl)
 {
-return file_get_contents($document_url);
+return file_get_contents($documentUrl);
 }
-private function get_urls(){
+private function getUrls(){
 
-    foreach ($this->regexp_rule as $key=>$value){
-        preg_match_all($this->regexp_rule[$key], $this->document_content, $this->result_array[$key]);
-        $this->result_array[$key]=array_merge($this->result_array[$key][1],$this->result_array[$key][2]);
-        $this->result_array[$key]=array_diff($this->result_array[$key],array(''));
-        $this->result_array[$key]= array_unique($this->result_array[$key]);
+    foreach ($this->regexpRule as $key=>$value){
+        preg_match_all($this->regexpRule[$key], $this->documentContent, $this->resultArray[$key]);
+        $this->resultArray[$key]=array_merge($this->resultArray[$key][1],$this->resultArray[$key][2]);
+        $this->resultArray[$key]=array_diff($this->resultArray[$key],array(''));
+        $this->resultArray[$key]= array_unique($this->resultArray[$key]);
     }
  }
-private function array_reindex (array $array){
+private function arrayReindex (array $array){
 	 
- foreach($array as $key =>$temp_value)
+ foreach($array as $key =>$tempValue)
  {
 	$counter=0;
-	foreach ($temp_value as $second_key=>$value) {
-	unset($array[$key][$second_key]);
-	$array[$key][$counter]=$temp_value[$second_key];
+	foreach ($tempValue as $secondKey=>$value) {
+	unset($array[$key][$secondKey]);
+	$array[$key][$counter]=$tempValue[$secondKey];
 	$counter++;	
 	}
 	
 	}
-$this->result_array=$array;	
+$this->resultArray=$array;
 }
 }
