@@ -1,6 +1,6 @@
 <!--Данный класс модели получает от контроллера список урлов-адресов статей и парсит их контент-->
 <?php
-class model_contentParser extends model_urlParser{
+class core_contentParser {
 
 private $urlArray= array();
 private $regexpRules=array(
@@ -9,21 +9,19 @@ private $regexpRules=array(
     'text_content'=> '#<div class="post-text.*">([^Ё]*){1}<footer class=".*post.*">#u'
 );
 private $contentArray=array();
-private $documentContent;
-
-function  __construct($arrayData)
+function  __construct(array $arrayData,$queryUrl)
  {
 $this->setArray($arrayData);
-$this->getContent($this->urlArray['content_url']);
+$this->getContent($this->urlArray['content_url'], new core_htmlGrabber(),$queryUrl);
  }
-private function getContent(array $url){
+private function getContent(array $url, core_htmlGrabber $htmlGrabber, $passedQueryUrl){
 
 	foreach($url as $value ) {
-	$this->documentContent=parent::getPage(controller_index::getUrlQuery() . $value);
+	$htmlGrabber->getPage($passedQueryUrl . $value);
 
         foreach ($this->regexpRules as $key =>$secondValue)
         {
-            preg_match_all($secondValue, $this->documentContent, $this->contentArray[$value][$key]);
+            preg_match_all($secondValue, $htmlGrabber->documentContent, $this->contentArray[$value][$key]);
         }
 }
 }

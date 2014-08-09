@@ -4,14 +4,15 @@
  * Добавление данных в базу данных.
  */
 
-class model_dataBase {
+class core_dataBase {
 private $content;
 private $login='root';
 private $password='root';
+public $rowsAdded;
 
 function __construct($data)
 {
-    $this->content=$data;
+   $this->content=$data;
    $this->DatabaseInsert();
 }
 private function DatabaseInsert (){
@@ -31,6 +32,7 @@ $dbh = new PDO('mysql:host=localhost;dbname=test', $this->login, $this->password
             $sth->bindParam(':content',$content);
             $sth->execute();
             $dbh->commit();
+            $this->rowsAdded+=$sth->rowCount();
         }
     }
     catch(PDOException $error)
@@ -38,4 +40,6 @@ $dbh = new PDO('mysql:host=localhost;dbname=test', $this->login, $this->password
         echo $error->getMessage();
     }
 }
+
+
 }
