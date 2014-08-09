@@ -4,7 +4,7 @@
  * Time: 18:04
  */
 
-class core_view {
+class core_View {
 
     public function pageGeneration($templateView,$data){
         include '/view/' . $templateView;
