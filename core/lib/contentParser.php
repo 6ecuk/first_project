@@ -1,7 +1,9 @@
-<!--Данный класс модели получает от контроллера список урлов-адресов статей и парсит их контент-->
 <?php
+namespace core\lib;
 
-class core_contentParser
+use core\lib2\htmlGrabber as htmlGrabber;
+
+class contentParser
 {
 
     private $urlArray = array();
@@ -15,10 +17,10 @@ class core_contentParser
     function  __construct(array $arrayData, $queryUrl)
     {
         $this->setArray($arrayData);
-        $this->getContent($this->urlArray['content_url'], new core_htmlGrabber(), $queryUrl);
+        $this->getContent($this->urlArray['content_url'], new htmlGrabber(), $queryUrl);
     }
 
-    private function getContent(array $url, core_htmlGrabber $htmlGrabber, $passedQueryUrl)
+    private function getContent(array $url, htmlGrabber $htmlGrabber, $passedQueryUrl)
     {
 
         foreach ($url as $value) {

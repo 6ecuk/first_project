@@ -1,10 +1,14 @@
 <?php
+namespace core\lib4;
 
+use \PDO as PDO;
+
+use \PDOException as PDOException;
 /**
  * Класс для работы с базой данных проекта.
  * Добавление данных в базу данных.
  */
-class core_dataBase
+class dataBase
 {
     private $content;
     private $login = 'root';

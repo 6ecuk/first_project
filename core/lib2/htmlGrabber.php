@@ -1,11 +1,12 @@
 <?php
+namespace core\lib2;
 
 /**
 
  * Date: 09.08.14
  * Time: 13:44
  */
-class core_htmlGrabber
+class htmlGrabber
 {
 
     public $documentContent;

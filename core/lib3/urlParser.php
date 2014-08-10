@@ -1,8 +1,9 @@
-﻿<!--Данный класс модели получает урл-адрес от контроллера, после парсит урлы категорий и статей в документе  -->
-
 <?php
+namespace core\lib3;
 
-class core_urlParser
+use core\lib2\htmlGrabber as htmlGrabber;
+
+class urlParser
 {
     private $resultArray = array();
     private $regexpRule = array(
@@ -10,7 +11,7 @@ class core_urlParser
         'content_url' => '#(?:<a class="post-item-link" href="(.*)">)|(?:<a href="(.*)" class="post-item-link">)#'
     );
 
-    function __construct($queryUrl, core_htmlGrabber $htmlGrabber)
+    function __construct($queryUrl, htmlGrabber $htmlGrabber)
     {
 
         $htmlGrabber->getPage($queryUrl);
