@@ -1,13 +1,13 @@
 <?php
 namespace application\model;
 
-use core\lib2\htmlGrabber as htmlGrabber;
+use library\htmlGrabber as htmlGrabber;
 
-use core\lib\contentParser as contentParser;
+use library\parser\contentParser as contentParser;
 
-use core\lib3\urlParser as urlParser;
+use library\parser\urlParser as urlParser;
 
-use core\lib4\dataBase as dataBase;
+use library\dataBase as dataBase;
 /**
  * Date: 09.08.14
  * Time: 15:13

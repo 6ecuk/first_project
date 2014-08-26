@@ -1,5 +1,5 @@
 <?php
-namespace core\lib2;
+namespace library;
 
 /**
 

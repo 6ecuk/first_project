@@ -4,7 +4,7 @@ namespace application\controller;
 
 use application\model\index as modelIndex;
 
-use core\lib5\view as view;
+use library\view as view;
 
     class index
     {
@@ -15,7 +15,7 @@ use core\lib5\view as view;
             $this->queryUrl = $passedQueryUrl;
             $model = new modelIndex($this->queryUrl);
             $view = new view();
-            $view->pageGeneration('default.php', $model->getRowsCount());
+            $view->pageGeneration('', $model->getRowsCount());
         }
 
     }

@@ -1,7 +1,7 @@
 <?php
-namespace core\lib;
+namespace library\parser;
 
-use core\lib2\htmlGrabber as htmlGrabber;
+use library\htmlGrabber as htmlGrabber;
 
 class contentParser
 {

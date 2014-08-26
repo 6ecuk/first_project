@@ -1,5 +1,5 @@
 <?php
-namespace core\lib4;
+namespace library;
 
 use \PDO as PDO;
 
