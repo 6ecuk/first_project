@@ -1,8 +1,11 @@
-<!--@@Создается экземляр контроллера. который передает GET с адресом страницы в  модель  -->
 <?php
-require_once 'class/SplClassLoader.php';
-$autoLoader= new SplClassLoader(null,__DIR__);
-$autoLoader->register();
+use application\controller\index as controller;
+
+require 'SplClassLoader.php';
+$application = new SplClassLoader('application', __DIR__);
+$application->register();
+$library = new SplClassLoader('library', __DIR__ . '/core');
+$library->register();
 header("Content-Type: text/html; charset=utf-8");
-new controller_index('http://'.$_GET['url_query']);
+new controller('http://' . 'news.auto.ru');
 
